@@ -1,0 +1,15 @@
+{
+  "// note": "Merge into ~/.gemini/config/config.json. Sanitized sample — your real file also holds machine-specific permission grants and a remote-control hostname; keep those local.",
+
+  "plugins": {
+    "mattpocock-skills": { "enabled": true }
+  },
+
+  "userSettings": {
+    "themeMode": "THEME_MODE_DARK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
+    "enableTerminalSandbox": false,
+    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
+    "globalPermissionGrants": { "allow": [] }
+  }
+}

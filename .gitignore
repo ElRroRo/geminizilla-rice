@@ -1,0 +1,10 @@
+# Editor / OS cruft
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local scratch
+statusline-last.json
+statusline-probe.sh
+errors.log

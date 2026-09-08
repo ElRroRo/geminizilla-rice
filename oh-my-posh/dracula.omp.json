@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "palette": {
+    "bg": "#282A36",
+    "selection": "#44475A",
+    "fg": "#F8F8F2",
+    "comment": "#6272A4",
+    "cyan": "#8BE9FD",
+    "green": "#50FA7B",
+    "orange": "#FFB86C",
+    "pink": "#FF79C6",
+    "purple": "#BD93F9",
+    "red": "#FF5555",
+    "yellow": "#F1FA8C",
+    "white": "#F8F8F2"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": false,
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "background": "p:purple",
+          "foreground": "p:bg",
+          "template": " {{ if .Root }}\uF023 {{ end }}{{ .Icon }} "
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:pink",
+          "foreground": "p:bg",
+          "template": " {{ if .SSHSession }}\uEBA9 {{ end }}{{ .UserName }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:selection",
+          "foreground": "p:cyan",
+          "properties": {
+            "style": "folder",
+            "max_depth": 3
+          },
+          "template": " \uF07B {{ path .Path .Location }} "
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:comment",
+          "foreground": "p:fg",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:orange{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:yellow{{ end }}",
+            "{{ if gt .Ahead 0 }}p:cyan{{ end }}",
+            "{{ if gt .Behind 0 }}p:pink{{ end }}"
+          ],
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:bg{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:bg{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": "\uE725 ",
+            "commit_icon": "\uF417 ",
+            "fetch_status": true
+          },
+          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }} "
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:green",
+          "foreground": "p:bg",
+          "template": " \uE718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} "
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:yellow",
+          "foreground": "p:bg",
+          "template": " \uE235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:yellow",
+          "foreground": "p:bg",
+          "properties": {
+            "threshold": 500
+          },
+          "template": " \uDB81\uDCC4 {{ .FormattedMs }} "
+        },
+        {
+          "type": "status",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B0",
+          "background": "p:purple",
+          "foreground": "p:bg",
+          "background_templates": [
+            "{{ if gt .Code 0 }}p:red{{ end }}"
+          ],
+          "template": " {{ if gt .Code 0 }}\uF00D {{ .Code }}{{ else }}\uF00C{{ end }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:pink",
+          "template": "\u276F "
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:pink",
+    "template": "\u276F "
+  },
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:cyan",
+    "template": "\u276F\u276F "
+  }
+}

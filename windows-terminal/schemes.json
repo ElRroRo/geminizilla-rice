@@ -1,0 +1,62 @@
+{
+  "$help": "Paste the entries of \"schemes\" into your Windows Terminal settings.json \"schemes\" array, and set profiles.defaults.colorScheme + font as shown in \"defaults\".",
+  "schemes": [
+    {
+      "background": "#08090F",
+      "black": "#0F111A",
+      "blue": "#00F0FF",
+      "brightBlack": "#495470",
+      "brightBlue": "#38E1FF",
+      "brightCyan": "#80F5FF",
+      "brightGreen": "#05FFA1",
+      "brightPurple": "#FF2A85",
+      "brightRed": "#FF3366",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFFF33",
+      "cursorColor": "#FF007F",
+      "cyan": "#00FFFF",
+      "foreground": "#F0F4F8",
+      "green": "#00FF66",
+      "name": "Cyberpunk Neon",
+      "purple": "#FF007F",
+      "red": "#FF1744",
+      "selectionBackground": "#3D144C",
+      "white": "#F0F4F8",
+      "yellow": "#FFE600"
+    },
+    {
+      "background": "#282A36",
+      "black": "#21222C",
+      "blue": "#BD93F9",
+      "brightBlack": "#6272A4",
+      "brightBlue": "#D6ACFF",
+      "brightCyan": "#A4FFFF",
+      "brightGreen": "#69FF94",
+      "brightPurple": "#FF92DF",
+      "brightRed": "#FF6E6E",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFFFA5",
+      "cursorColor": "#F8F8F2",
+      "cyan": "#8BE9FD",
+      "foreground": "#F8F8F2",
+      "green": "#50FA7B",
+      "name": "Dracula",
+      "purple": "#FF79C6",
+      "red": "#FF5555",
+      "selectionBackground": "#44475A",
+      "white": "#F8F8F2",
+      "yellow": "#F1FA8C"
+    }
+  ],
+  "defaults": {
+    "colorScheme": "Cyberpunk Neon",
+    "cursorShape": "bar",
+    "experimental.retroTerminalEffect": false,
+    "font": {
+      "face": "JetBrainsMono NF",
+      "size": 11.5
+    },
+    "opacity": 43,
+    "useAcrylic": true
+  }
+}

@@ -1,0 +1,10 @@
+# ANSI art — keep bytes exactly as-is, never touch line endings
+*.ans -text
+
+# Everything else: normalize to LF in the repo
+*.js    text eol=lf
+*.json  text eol=lf
+*.jsonc text eol=lf
+*.py    text eol=lf
+*.md    text eol=lf
+*.ps1   text eol=lf

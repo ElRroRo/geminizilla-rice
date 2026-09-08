@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "palette": {
+    "black": "#08090F",
+    "surface": "#121524",
+    "surface_bright": "#1C2038",
+    "white": "#F0F4F8",
+    "muted": "#4B5578",
+    "neon_magenta": "#FF007F",
+    "neon_cyan": "#00F0FF",
+    "neon_green": "#00FF66",
+    "neon_yellow": "#FFE600",
+    "neon_purple": "#B026FF",
+    "neon_orange": "#FF5E00",
+    "neon_red": "#FF1744"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": false,
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "\uE0B6",
+          "background": "p:neon_magenta",
+          "foreground": "p:black",
+          "template": " {{ if .Root }}\uF023 {{ end }}{{ .Icon }} "
+        },
+        {
+          "type": "session",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:surface_bright",
+          "foreground": "p:neon_cyan",
+          "template": " {{ if .SSHSession }}\uEBA9 {{ end }}{{ .UserName }} "
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:surface",
+          "foreground": "p:neon_yellow",
+          "properties": {
+            "style": "folder",
+            "max_depth": 3
+          },
+          "template": " \uF07B {{ path .Path .Location }} "
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:neon_purple",
+          "foreground": "p:white",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:neon_orange{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:neon_yellow{{ end }}",
+            "{{ if gt .Ahead 0 }}p:neon_cyan{{ end }}",
+            "{{ if gt .Behind 0 }}p:neon_magenta{{ end }}"
+          ],
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:black{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:black{{ end }}",
+            "{{ if gt .Ahead 0 }}p:black{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": "\uE725 ",
+            "commit_icon": "\uF417 ",
+            "fetch_status": true
+          },
+          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }} "
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:neon_green",
+          "foreground": "p:black",
+          "template": " \uE718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} "
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:neon_yellow",
+          "foreground": "p:black",
+          "template": " \uE235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "background": "p:neon_cyan",
+          "foreground": "p:black",
+          "properties": {
+            "threshold": 500
+          },
+          "template": " \uDB81\uDCC4 {{ .FormattedMs }} "
+        },
+        {
+          "type": "status",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B0",
+          "background": "p:neon_green",
+          "foreground": "p:black",
+          "background_templates": [
+            "{{ if gt .Code 0 }}p:neon_red{{ end }}"
+          ],
+          "template": " {{ if gt .Code 0 }}\uF00D {{ .Code }}{{ else }}\uF00C{{ end }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:neon_magenta",
+          "template": "\u276F "
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:neon_magenta",
+    "template": "\u276F "
+  },
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:neon_cyan",
+    "template": "\u276F\u276F "
+  }
+}
