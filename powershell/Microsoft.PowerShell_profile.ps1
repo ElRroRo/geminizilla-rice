@@ -173,14 +173,39 @@ function claude {
     if ($exe) { & $exe $args } else { Write-Error "claude.exe not found in PATH" }
 }
 
+function Patch-AgyRice {
+    <#
+    .SYNOPSIS
+    Re-applies the Neo-Tokyo Godzilla theme patch to agy.exe (fixes theme reverts after AGY updates).
+    #>
+    $patcher = "$env:USERPROFILE\geminizilla-rice\agy\patch-neo-tokyo.py"
+    if (Test-Path $patcher) {
+        python $patcher
+    } else {
+        Write-Warning "Patcher script not found at $patcher"
+    }
+}
+
 function agy {
+    $exe = (Get-Command -CommandType Application agy.exe -ErrorAction SilentlyContinue).Source
+    if (-not $exe) {
+        Write-Error "agy.exe not found in PATH"
+        return
+    }
+
+    # Auto-heal: If agy.exe was refreshed by an auto-update, re-patch Neo-Tokyo theme
+    $binDir = Split-Path -Parent $exe
+    $stamp = Join-Path $binDir '.neo_tokyo_patched'
+    if ((-not (Test-Path $stamp)) -or ((Get-Item $exe).LastWriteTime -gt (Get-Item $stamp).LastWriteTime)) {
+        Patch-AgyRice
+    }
+
     if (-not (Test-KaijuQuiet $args)) {
         Write-KaijuBanner -Title 'A N T I G R A V I T Y' `
                           -Subtitle 'google // agentic terminal' `
-                          -Facts @('scheme   tokyo night', 'settings ~\.gemini\antigravity-cli')
+                          -Facts @('scheme   custom:neo-tokyo', 'status   ctx / quota telemetry')
     }
-    $exe = (Get-Command -CommandType Application agy.exe -ErrorAction SilentlyContinue).Source
-    if ($exe) { & $exe $args } else { Write-Error "agy.exe not found in PATH" }
+    & $exe $args
 }
 
 # 7b. Godzilla logo variant switcher (fastfetch)

@@ -1,0 +1,10 @@
+{
+  "// note": "Merge into ~/.gemini/antigravity-cli/settings.json to enable the Neo-Tokyo statusline and theme.",
+  "colorScheme": "tokyo night",
+  "statusLine": {
+    "type": "command",
+    "command": "node %USERPROFILE%/.gemini/antigravity-cli/statusline.js",
+    "enabled": true
+  },
+  "toolPermission": "always-proceed"
+}

@@ -2,20 +2,12 @@
 
 A **Neo-Tokyo Godzilla** terminal rice for **Google Antigravity** (`agy`) on
 Windows. Same cyberpunk-neon shell base as its siblings, plus the
-Antigravity-specific layer: a kaiju launch banner for `agy`, a sanitized
-`~/.gemini/config` sample, a `GEMINI.md` template, and a Windows Terminal
-**Tokyo Night** scheme to match `agy`'s own color scheme.
+Antigravity-specific layer: a kaiju launch banner for `agy`, a Neo-Tokyo
+color theme patcher for `agy.exe`, an intelligent dual-line Godzilla statusline,
+a sanitized `~/.gemini/config` sample, a `GEMINI.md` template, and a Windows Terminal
+**Tokyo Night** scheme to match `agy`'s cyberpunk aesthetic.
 
 > ゴジラ ⚡ KAIJU PROTOCOL // 01
-
-**Heads up — the `agy` layer is deliberately thin.** Unlike Claude Code, the
-Antigravity CLI has **no custom-theme file and no configurable statusline**; its
-color scheme (`tokyo night`) is an interactive pick in `agy /settings`. So the
-Antigravity-specific rice is: the launch banner, the config sample, the
-`GEMINI.md` rules template, and a matching terminal scheme. The rest of this
-repo is the shared shell base (identical to
-**[Terminalzilla](https://github.com/ElRroRo/terminalzilla)** — bundled here so
-this repo stands alone).
 
 Sibling: **[Claudezilla Rice](https://github.com/ElRroRo/claudezilla-rice)**.
 
@@ -23,12 +15,15 @@ Sibling: **[Claudezilla Rice](https://github.com/ElRroRo/claudezilla-rice)**.
 
 ### Antigravity layer (`agy/`, `windows-terminal/tokyo-night.json`)
 
-| Path                              | What it is                                                            |
-| --------------------------------- | ------------------------------------------------------------------- |
-| `agy/config.sample.json`          | Keys to merge into `~/.gemini/config/config.json` (dark theme mode, auto-execution policy, sandbox off) |
-| `agy/GEMINI.example.md`           | Template for `~/.gemini/GEMINI.md` — the "conditional sections" rules pattern with neutral placeholders |
-| `windows-terminal/tokyo-night.json` | A **Tokyo Night** color scheme so Windows Terminal matches `agy`'s own scheme |
-| `powershell/…` (`agy` function)   | Wraps `agy` to print an `A N T I G R A V I T Y` launch banner, auto-suppressed in print / piped / non-interactive mode |
+| Path                                | What it is                                                            |
+| ----------------------------------- | ------------------------------------------------------------------- |
+| `agy/patch-neo-tokyo.py`            | Automated patcher that upgrades `agy.exe`'s built-in `tokyo night` scheme to **Neo-Tokyo** (hot neon magenta lines, abyss black bg, ice white text, neon green diffs) |
+| `agy/statusline.js`                 | Intelligent model-aware dual-line telemetry statusline (context % + Gemini / 3P quota bars) |
+| `agy/settings.sample.json`          | Sample `~/.gemini/antigravity-cli/settings.json` configuring the statusline and `tokyo night` scheme |
+| `agy/config.sample.json`            | Keys to merge into `~/.gemini/config/config.json` (dark theme mode, auto-execution policy, sandbox off) |
+| `agy/GEMINI.example.md`             | Template for `~/.gemini/GEMINI.md` — the "conditional sections" rules pattern with neutral placeholders |
+| `windows-terminal/tokyo-night.json` | A **Tokyo Night** color scheme so Windows Terminal matches `agy`'s scheme |
+| `powershell/…` (`agy` + `Patch-AgyRice`) | Wraps `agy` with auto-heal (re-patches after CLI auto-updates) and launch banner |
 
 ### Shared shell base
 
@@ -54,17 +49,17 @@ Paths assume `%USERPROFILE%` = `C:\Users\YOU`.
 
 ### Antigravity layer
 
-1. **Config** — merge `agy/config.sample.json` into `~/.gemini/config/config.json`.
+1. **Theme patcher** — run `python agy/patch-neo-tokyo.py`. This upgrades `agy.exe`'s built-in `tokyo night` palette to cyberpunk Neo-Tokyo (hot neon magenta lines/prompts `#ff0087`, ice white `#f0f4f8`, deep abyss black `#08090f`, Chroma highlights `#3d144c`). The PowerShell profile below automatically re-patches whenever AGY auto-updates!
+2. **Statusline** — copy `agy/statusline.js` → `~/.gemini/antigravity-cli/statusline.js`.
+3. **Settings** — merge `agy/settings.sample.json` into `~/.gemini/antigravity-cli/settings.json` (sets `colorScheme: "tokyo night"` and hooks up the statusline).
+4. **Config** — merge `agy/config.sample.json` into `~/.gemini/config/config.json`.
    Your live file also holds machine-specific `globalPermissionGrants` and a
    `remoteControlHostname`; leave those alone.
-2. **Rules** — copy `agy/GEMINI.example.md` → `~/.gemini/GEMINI.md` and fill in
-   your own sections. `agy` also picks up `GEMINI.md` / `AGENTS.md` walking up
-   from the workspace.
-3. **Color scheme** — in `agy /settings` set the scheme to **tokyo night**.
-   Then add `windows-terminal/tokyo-night.json`'s scheme to your Windows
-   Terminal `schemes` array so the terminal chrome matches (use it on the
-   profile you launch `agy` from, or make a dedicated "Antigravity" profile).
-4. **Launch banner** — comes with the PowerShell profile below; nothing extra.
+5. **Rules** — copy `agy/GEMINI.example.md` → `~/.gemini/GEMINI.md` and fill in
+   your own sections.
+6. **Windows Terminal** — add `windows-terminal/tokyo-night.json`'s scheme to your
+   Windows Terminal `schemes` array so the terminal background and borders match.
+7. **Launch banner & Auto-heal** — included in the PowerShell profile below; handles launch banner, telemetry badge, and auto-repatching after CLI updates.
 
 ### Shared shell base
 
