@@ -2,7 +2,7 @@
   "$help": "Paste the entries of \"schemes\" into your Windows Terminal settings.json \"schemes\" array, and set profiles.defaults.colorScheme + font as shown in \"defaults\".",
   "schemes": [
     {
-      "background": "#08090F",
+      "background": "#1A1B26",
       "black": "#0F111A",
       "blue": "#00F0FF",
       "brightBlack": "#495470",

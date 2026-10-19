@@ -49,7 +49,7 @@ Paths assume `%USERPROFILE%` = `C:\Users\YOU`.
 
 ### Antigravity layer
 
-1. **Theme patcher** — run `python agy/patch-neo-tokyo.py`. This upgrades `agy.exe`'s built-in `tokyo night` palette to cyberpunk Neo-Tokyo (hot neon magenta lines/prompts `#ff0087`, ice white `#f0f4f8`, deep abyss black `#08090f`, Chroma highlights `#3d144c`). The PowerShell profile below automatically re-patches whenever AGY auto-updates!
+1. **Theme patcher** — run `python agy/patch-neo-tokyo.py`. This upgrades `agy.exe`'s built-in `tokyo night` palette to cyberpunk Neo-Tokyo (hot neon magenta lines/prompts `#ff0087`, ice white `#f0f4f8`, Tokyo Night navy `#1a1b26`, Chroma highlights `#3d144c`). The PowerShell profile below automatically re-patches whenever AGY auto-updates!
 2. **Statusline** — copy `agy/statusline.js` → `~/.gemini/antigravity-cli/statusline.js`.
 3. **Settings** — merge `agy/settings.sample.json` into `~/.gemini/antigravity-cli/settings.json` (sets `colorScheme: "tokyo night"` and hooks up the statusline).
 4. **Config** — merge `agy/config.sample.json` into `~/.gemini/config/config.json`.

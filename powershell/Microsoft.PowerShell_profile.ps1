@@ -71,7 +71,7 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 }
 
 # 5. FZF Cyberpunk Neon Styling
-$env:FZF_DEFAULT_OPTS = '--color=fg:#f0f4f8,bg:#08090f,hl:#00f0ff --color=fg+:#ffffff,bg+:#1c2038,hl+:#ff007f --color=info:#ffe600,prompt:#ff007f,pointer:#ff007f --color=marker:#00ff66,spinner:#ffe600,header:#495470 --height 40% --layout=reverse --border'
+$env:FZF_DEFAULT_OPTS = '--color=fg:#f0f4f8,bg:#1a1b26,hl:#00f0ff --color=fg+:#ffffff,bg+:#1c2038,hl+:#ff007f --color=info:#ffe600,prompt:#ff007f,pointer:#ff007f --color=marker:#00ff66,spinner:#ffe600,header:#495470 --height 40% --layout=reverse --border'
 
 # 6. Modern Aliases (eza, bat)
 if (Get-Command eza -ErrorAction SilentlyContinue) {

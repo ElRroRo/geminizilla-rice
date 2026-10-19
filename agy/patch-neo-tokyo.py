@@ -32,7 +32,7 @@ STOCK_PALETTE = (
 )
 
 NEO_TOKYO_PALETTE = (
-    b'#08090f'  # 1. background (deep abyss black)
+    b'#1a1b26'  # 1. background (Tokyo Night navy)
     b'#f0f4f8'  # 2. foreground (ice white)
     b'#ff0087'  # 3. primary (hot neon magenta)
     b'#ff0087'  # 4. BORDER / LINES (hot neon magenta)

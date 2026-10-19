@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "version": 2,
   "palette": {
-    "black": "#08090F",
+    "black": "#1A1B26",
     "surface": "#121524",
     "surface_bright": "#1C2038",
     "white": "#F0F4F8",
